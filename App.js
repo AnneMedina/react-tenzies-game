@@ -1,4 +1,5 @@
 import React from "react"
+import Die from "./Die.js"
 
 
 export default function App() {
@@ -12,11 +13,10 @@ export default function App() {
                 <h2 className="game--title">Tenzies</h2>
                 <p className="game--instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
                 <div className="game--buttons-box">
-                    {gameButtonValues.map((buttonValue) => {
-                        return <div className="game--buttons clicked">
-                            {buttonValue}
-                        </div>
-                    })}
+
+                    {gameButtonValues.map(buttonValue => (<Die key={Math.random(10)} value={buttonValue} />)
+                    )}
+
                 </div>
                 <button className="game--button-roll">Roll</button>
             </div>

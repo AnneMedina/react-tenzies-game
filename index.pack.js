@@ -510,6 +510,10 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Die = __webpack_require__(19);
+
+var _Die2 = _interopRequireDefault(_Die);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
@@ -536,11 +540,7 @@ function App() {
                 "div",
                 { className: "game--buttons-box" },
                 gameButtonValues.map(function (buttonValue) {
-                    return _react2.default.createElement(
-                        "div",
-                        { className: "game--buttons clicked" },
-                        buttonValue
-                    );
+                    return _react2.default.createElement(_Die2.default, { key: Math.random(10), value: buttonValue });
                 })
             ),
             _react2.default.createElement(
@@ -29208,6 +29208,33 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = Die;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Die(props) {
+
+    return _react2.default.createElement(
+        "div",
+        { className: "game--buttons " },
+        props.value
+    );
+}
 
 /***/ })
 /******/ ]);
