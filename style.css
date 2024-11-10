@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  width: 360px;
+  height: 380px;
+  background: #0b2434;
+  margin: auto;
+  display: flex;
+}
+
+.game--box {
+  width: 320px;
+  height: 320px;
+  padding: 33.28px 34.56px 33.92px 34.56px;
+  border-radius: 10px;
+  margin: auto;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.game--title {
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: #2b283a;
+  font-weight: 700;
+  font-family: Karla;
+  font-size: 1.75rem;
+}
+
+.game--instructions {
+  font-family: "Inter", sans-serif;
+  margin-top: 0px;
+  font-weight: 400;
+  line-height: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.game--buttons-box {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: auto auto auto auto auto;
+  margin: 20px 0px;
+}
+
+.game--buttons {
+  width: 35px;
+  height: 35px;
+  box-shadow: 0px 2px 2px 0px #00000026;
+  border-radius: 10px;
+  text-align: center;
+  line-height: 35px;
+  font-family: Karla;
+  font-weight: 700;
+}
+
+.clicked {
+  background-color: #59e391;
+}
+
+.game--button-roll {
+  margin: auto;
+  width: 92px;
+  background-color: #5035ff;
+  font-family: "Karla", sans-serif;
+  font-weight: 700;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
