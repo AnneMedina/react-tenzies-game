@@ -8,12 +8,13 @@ export default function App() {
     const [tenzies, setTenzies] = React.useState(false)
 
     React.useEffect(() => {
-        // console.log("Dice state changed")
-        if (checkIfWon()) {
-            console.log("You won!")
+        const allHeld = dice.every(die => die.isHeld)
+        const firstValue = dice[0].value
+        const allSameValue = dice.every(die => die.value === firstValue)
+        if (allHeld && allSameValue) {
             setTenzies(true)
+            console.log("You won!")
         }
-
     }, [dice])
     /**
      * Challenge: Check the dice array for these winning conditions:
@@ -23,14 +24,6 @@ export default function App() {
      * If both conditions are true, set `tenzies` to true and log
      * "You won!" to the console
      */
-
-    function checkIfWon() {
-        let winningValue = 2 //winning value
-        let won = dice.find((die) => !(die.isHeld && die.value == winningValue)) ? false : true
-
-        // console.log(won && setTenzies(won) ? "You won!" : "Try again!");
-        return won
-    }
 
     function generateNewDie() {
         return {
