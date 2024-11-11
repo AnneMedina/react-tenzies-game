@@ -9,7 +9,11 @@ export default function App() {
 
     React.useEffect(() => {
         // console.log("Dice state changed")
-        checkIfWon() && console.log("You won!")
+        if (checkIfWon()) {
+            console.log("You won!")
+            setTenzies(true)
+        }
+
     }, [dice])
     /**
      * Challenge: Check the dice array for these winning conditions:
