@@ -463,25 +463,25 @@ function App() {
                 localStorage.setItem("bestRecord", numberOfRolls);
             }
 
+            /** At the end of the game, stop the timer */
             setTimerRunning(false);
         }
     }, [dice]);
 
-    _react2.default.useEffect(function () {
-        var timer = void 0;
-        if (timerRunning) {
-            timer = setInterval(function () {
-                setTimeToFinish(function (prevTime) {
-                    return prevTime + 1;
-                });
-            }, 1000);
-        }
+    // React.useEffect(() => {
+    //     let timer;
 
-        //cleanup interval after use
-        return function () {
-            return clearInterval(timer);
-        };
-    }, [timerRunning]);
+    //     if (timerRunning) {
+    //         timer = setInterval(() => {
+    //             setTimeToFinish((prevTime) => prevTime + 1)
+    //         }, 1000)
+
+    //         console.log(timer)
+    //     }
+
+    //     //cleanup interval after use
+    //     return () => clearInterval(timer);
+    // }, [timerRunning])
 
     function generateNewDie() {
         return {
@@ -692,24 +692,22 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function Die(props) {
     var styles = {
         backgroundColor: props.isHeld ? "#59E391" : "white"
+    };
 
-        // const dots = Array.from({ length: 5 }, (_, i) => {
-        //     // return `_:${_}, i:${i}`
-        //     <span className="dot"></span>
-        // })
+    var dots = Array.from({ length: props.value }, function (_, i) {
+        return _react2.default.createElement("span", { key: i, className: "dot" });
+    });
 
-    };return _react2.default.createElement(
+    console.log({ dots: dots });
+
+    return _react2.default.createElement(
         "div",
         {
             className: "die-face die-" + props.value,
             style: styles,
             onClick: props.holdDice
         },
-        _react2.default.createElement(
-            "h2",
-            { className: "die-num" },
-            props.value
-        )
+        dots
     );
 }
 

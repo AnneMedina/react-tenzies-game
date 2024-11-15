@@ -26,21 +26,25 @@ export default function App() {
                 localStorage.setItem("bestRecord", numberOfRolls)
             }
 
+            /** At the end of the game, stop the timer */
             setTimerRunning(false)
         }
     }, [dice])
 
-    React.useEffect(() => {
-        let timer;
-        if (timerRunning) {
-            timer = setInterval(() => {
-                setTimeToFinish((prevTime) => prevTime + 1)
-            }, 1000)
-        }
+    // React.useEffect(() => {
+    //     let timer;
 
-        //cleanup interval after use
-        return () => clearInterval(timer);
-    }, [timerRunning])
+    //     if (timerRunning) {
+    //         timer = setInterval(() => {
+    //             setTimeToFinish((prevTime) => prevTime + 1)
+    //         }, 1000)
+
+    //         console.log(timer)
+    //     }
+
+    //     //cleanup interval after use
+    //     return () => clearInterval(timer);
+    // }, [timerRunning])
 
     function generateNewDie() {
         return {

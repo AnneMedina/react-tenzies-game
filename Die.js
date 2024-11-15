@@ -6,10 +6,11 @@ export default function Die(props) {
         backgroundColor: props.isHeld ? "#59E391" : "white"
     }
 
-    // const dots = Array.from({ length: 5 }, (_, i) => {
-    //     // return `_:${_}, i:${i}`
-    //     <span className="dot"></span>
-    // })
+    const dots = Array.from({ length: props.value }, (_, i) => {
+        return (<span key={i} className="dot"></span>)
+    })
+
+    console.log({ dots })
 
     return (
         <div
@@ -18,10 +19,8 @@ export default function Die(props) {
             onClick={props.holdDice}
         >
 
-
-            {/* {dots} */}
-
-            <h2 className="die-num">{props.value}</h2>
+            {dots}
+            {/* <h2 className="die-num">{props.value}</h2> */}
         </div>
     )
 }
