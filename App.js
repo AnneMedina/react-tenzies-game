@@ -2,6 +2,7 @@ import React from "react"
 import Die from "./Die"
 import { nanoid } from "nanoid"
 import Confetti from "react-confetti"
+import Timer from "./Timer"
 
 export default function App() {
 
@@ -9,9 +10,8 @@ export default function App() {
     const [tenzies, setTenzies] = React.useState(false)
     const [numberOfRolls, setNumberOfRolls] = React.useState(0) //initialize number of rolls to 0
     const [timerRunning, setTimerRunning] = React.useState(true)
-    const [timeToFinish, setTimeToFinish] = React.useState(0) //initialize to 0 seconds
-
     const [bestRecord, setBestRecord] = React.useState(localStorage.getItem("bestRecord") ? localStorage.getItem("bestRecord") : 0); //Initialize bestRecord to 0
+    const [resetTime, setResetTime] = React.useState(true);
 
     React.useEffect(() => {
         const allHeld = dice.every(die => die.isHeld)
@@ -28,23 +28,12 @@ export default function App() {
 
             /** At the end of the game, stop the timer */
             setTimerRunning(false)
+
+            /** Have to change state because the reset in useEffect in Die component will 
+             * not be triggered if the state resetTime has the same value as the previous value */
+            setResetTime(false)
         }
     }, [dice])
-
-    // React.useEffect(() => {
-    //     let timer;
-
-    //     if (timerRunning) {
-    //         timer = setInterval(() => {
-    //             setTimeToFinish((prevTime) => prevTime + 1)
-    //         }, 1000)
-
-    //         console.log(timer)
-    //     }
-
-    //     //cleanup interval after use
-    //     return () => clearInterval(timer);
-    // }, [timerRunning])
 
     function generateNewDie() {
         return {
@@ -52,15 +41,6 @@ export default function App() {
             isHeld: false,
             id: nanoid()
         }
-    }
-
-    function formatTime(timeInSeconds) {
-        const minutes = Math.floor((timeInSeconds / 3600) / 60)
-        const seconds = Math.floor(timeInSeconds % 60)
-
-        return `${minutes
-            .toString()
-            .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     }
 
     /** Set a new game */
@@ -73,6 +53,7 @@ export default function App() {
     }
 
     function rollDice() {
+
         /** Track number of rolls */
         setNumberOfRolls(prevCount => prevCount + 1);
         if (!tenzies) {
@@ -85,8 +66,8 @@ export default function App() {
             setTenzies(false)
             setNumberOfRolls(0)
             setDice(allNewDice())
-            setTimeToFinish(0) //reset to 0 seconds
             setTimerRunning(true)
+            setResetTime(true)
         }
     }
 
@@ -130,7 +111,7 @@ export default function App() {
             </div>
             <div className="tracking">
                 <pre>Number of Rolls: <span className="records">{numberOfRolls}</span></pre>
-                <pre>Time to finish: <span className="records">{formatTime(timeToFinish)}</span></pre>
+                <Timer timerRunning={timerRunning} resetTime={resetTime} />
                 <pre>Best record: <span className="records">{bestRecord}</span></pre>
             </div>
             <button

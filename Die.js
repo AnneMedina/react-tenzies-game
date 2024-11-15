@@ -10,8 +10,6 @@ export default function Die(props) {
         return (<span key={i} className="dot"></span>)
     })
 
-    console.log({ dots })
-
     return (
         <div
             className={`die-face die-${props.value}`}
