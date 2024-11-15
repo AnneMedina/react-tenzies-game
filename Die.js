@@ -18,9 +18,7 @@ export default function Die(props) {
             style={styles}
             onClick={props.holdDice}
         >
-
             {dots}
-            {/* <h2 className="die-num">{props.value}</h2> */}
         </div>
     )
 }
