@@ -523,6 +523,7 @@ function App() {
             setTenzies(false);
             setNumberOfRolls(0);
             setDice(allNewDice());
+            setTimeToFinish(0); //reset to 0 seconds
             setTimerRunning(true);
         }
     }
@@ -586,19 +587,31 @@ function App() {
                 "pre",
                 null,
                 "Number of Rolls: ",
-                numberOfRolls
+                _react2.default.createElement(
+                    "span",
+                    { className: "records" },
+                    numberOfRolls
+                )
             ),
             _react2.default.createElement(
                 "pre",
                 null,
                 "Time to finish: ",
-                formatTime(timeToFinish)
+                _react2.default.createElement(
+                    "span",
+                    { className: "records" },
+                    formatTime(timeToFinish)
+                )
             ),
             _react2.default.createElement(
                 "pre",
                 null,
                 "Best record: ",
-                bestRecord
+                _react2.default.createElement(
+                    "span",
+                    { className: "records" },
+                    bestRecord
+                )
             )
         ),
         _react2.default.createElement(

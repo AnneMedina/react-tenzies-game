@@ -34,6 +34,15 @@ main {
   text-align: center;
 }
 
+.tracking {
+  font-family: "Karla", sans-serif;
+  font-size: 0.9rem;
+}
+
+.records {
+  color: orangered;
+}
+
 .dice-container {
   display: grid;
   grid-template: auto auto / repeat(5, 1fr);

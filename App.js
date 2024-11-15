@@ -79,8 +79,9 @@ export default function App() {
             }))
         } else { //If game is already won
             setTenzies(false)
-            setNumberOfRolls(0);
+            setNumberOfRolls(0)
             setDice(allNewDice())
+            setTimeToFinish(0) //reset to 0 seconds
             setTimerRunning(true)
         }
     }
@@ -124,9 +125,9 @@ export default function App() {
                 {diceElements}
             </div>
             <div className="tracking">
-                <pre>Number of Rolls: {numberOfRolls}</pre>
-                <pre>Time to finish: {formatTime(timeToFinish)}</pre>
-                <pre>Best record: {bestRecord}</pre>
+                <pre>Number of Rolls: <span className="records">{numberOfRolls}</span></pre>
+                <pre>Time to finish: <span className="records">{formatTime(timeToFinish)}</span></pre>
+                <pre>Best record: <span className="records">{bestRecord}</span></pre>
             </div>
             <button
                 className="roll-dice"
