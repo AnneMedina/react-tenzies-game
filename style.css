@@ -165,7 +165,7 @@ main {
 }
 
 .records-icons {
-  line-height: 24px;
   vertical-align: bottom;
   margin-right: 10px;
+  display: inline-block;
 }
