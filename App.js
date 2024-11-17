@@ -2,7 +2,7 @@ import React from "react"
 import Die from "./Die"
 import { nanoid } from "nanoid"
 import Confetti from "react-confetti"
-import Timer from "./Timer"
+import Tracking from "./Tracking"
 
 export default function App() {
 
@@ -73,6 +73,7 @@ export default function App() {
 
     function holdDice(id) {
         setDice(oldDice => oldDice.map(die => {
+
             if (die.id === id) {
                 return {
                     id: die.id,
@@ -109,11 +110,9 @@ export default function App() {
             <div className="dice-container">
                 {diceElements}
             </div>
-            <div className="tracking">
-                <pre>Number of Rolls: <span className="records">{numberOfRolls}</span></pre>
-                <Timer timerRunning={timerRunning} resetTime={resetTime} />
-                <pre>Best record: <span className="records">{bestRecord}</span></pre>
-            </div>
+
+            <Tracking numberOfRolls={numberOfRolls} timerRunning={timerRunning} resetTime={resetTime} bestRecord={bestRecord} />
+
             <button
                 className="roll-dice"
                 onClick={rollDice}

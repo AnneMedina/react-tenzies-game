@@ -412,9 +412,9 @@ var _reactConfetti = __webpack_require__(11);
 
 var _reactConfetti2 = _interopRequireDefault(_reactConfetti);
 
-var _Timer = __webpack_require__(7);
+var _Tracking = __webpack_require__(21);
 
-var _Timer2 = _interopRequireDefault(_Timer);
+var _Tracking2 = _interopRequireDefault(_Tracking);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -519,6 +519,7 @@ function App() {
     function _holdDice(id) {
         setDice(function (oldDice) {
             return oldDice.map(function (die) {
+
                 if (die.id === id) {
                     return {
                         id: die.id,
@@ -568,31 +569,7 @@ function App() {
             { className: "dice-container" },
             diceElements
         ),
-        _react2.default.createElement(
-            "div",
-            { className: "tracking" },
-            _react2.default.createElement(
-                "pre",
-                null,
-                "Number of Rolls: ",
-                _react2.default.createElement(
-                    "span",
-                    { className: "records" },
-                    numberOfRolls
-                )
-            ),
-            _react2.default.createElement(_Timer2.default, { timerRunning: timerRunning, resetTime: resetTime }),
-            _react2.default.createElement(
-                "pre",
-                null,
-                "Best record: ",
-                _react2.default.createElement(
-                    "span",
-                    { className: "records" },
-                    bestRecord
-                )
-            )
-        ),
+        _react2.default.createElement(_Tracking2.default, { numberOfRolls: numberOfRolls, timerRunning: timerRunning, resetTime: resetTime, bestRecord: bestRecord }),
         _react2.default.createElement(
             "button",
             {
@@ -749,6 +726,15 @@ function Timer(props) {
     return _react2.default.createElement(
         'pre',
         null,
+        _react2.default.createElement(
+            'span',
+            { className: 'records-icons' },
+            _react2.default.createElement(
+                'svg',
+                { xmlns: 'http://www.w3.org/2000/svg', height: '24px', viewBox: '0 -960 960 960', width: '24px', fill: '#5035ff' },
+                _react2.default.createElement('path', { d: 'M355.69-846v-86h248.62v86H355.69ZM437-373.69h86v-248.62h-86v248.62ZM480-50q-76.15 0-142.58-28.76-66.43-28.77-116.16-78.5-49.73-49.73-78.5-116.16Q114-339.85 114-416t28.76-142.58q28.77-66.43 78.5-116.16 49.73-49.73 116.16-78.5Q403.85-782 480-782q61.49 0 118.44 19.39 56.94 19.38 105.64 57.38l60.84-60.84 61.15 61.15-60.84 60.84q41 51.7 60.88 109.35Q846-477.08 846-416q0 76.15-28.76 142.58-28.77 66.43-78.5 116.16-49.73 49.73-116.16 78.5Q556.15-50 480-50Zm0-86q116 0 198-82t82-198q0-116-82-198t-198-82q-116 0-198 82t-82 198q0 116 82 198t198 82Zm0-280Z' })
+            )
+        ),
         'Time to finish: ',
         _react2.default.createElement(
             'span',
@@ -30932,6 +30918,74 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = Tracking;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Timer = __webpack_require__(7);
+
+var _Timer2 = _interopRequireDefault(_Timer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Tracking(props) {
+    return _react2.default.createElement(
+        "div",
+        { className: "tracking" },
+        _react2.default.createElement(
+            "pre",
+            null,
+            _react2.default.createElement(
+                "span",
+                { className: "records-icons" },
+                _react2.default.createElement(
+                    "svg",
+                    { xmlns: "http://www.w3.org/2000/svg", height: "24px", viewBox: "0 -960 960 960", width: "24px", fill: "#5035ff" },
+                    _react2.default.createElement("path", { d: "M313.66-251.08q26.07 0 44.21-18.25Q376-287.58 376-313.66q0-26.07-18.25-44.21Q339.5-376 313.42-376q-26.07 0-44.21 18.25-18.13 18.25-18.13 44.33 0 26.07 18.25 44.21 18.25 18.13 44.33 18.13Zm0-332.92q26.07 0 44.21-18.25Q376-620.5 376-646.58q0-26.07-18.25-44.21-18.25-18.13-44.33-18.13-26.07 0-44.21 18.25-18.13 18.25-18.13 44.33 0 26.07 18.25 44.21Q287.58-584 313.66-584Zm166.46 166.46q26.07 0 44.21-18.25 18.13-18.25 18.13-44.33 0-26.07-18.25-44.21-18.25-18.13-44.33-18.13-26.07 0-44.21 18.25-18.13 18.25-18.13 44.33 0 26.07 18.25 44.21 18.25 18.13 44.33 18.13Zm165.46 166.46q26.07 0 44.21-18.25 18.13-18.25 18.13-44.33 0-26.07-18.25-44.21Q671.42-376 645.34-376q-26.07 0-44.21 18.25Q583-339.5 583-313.42q0 26.07 18.25 44.21 18.25 18.13 44.33 18.13Zm1-332.92q26.07 0 44.21-18.25 18.13-18.25 18.13-44.33 0-26.07-18.25-44.21-18.25-18.13-44.33-18.13-26.07 0-44.21 18.25Q584-672.42 584-646.34q0 26.07 18.25 44.21Q620.5-584 646.58-584ZM108-108v-744h744v744H108Zm86-86h572v-572H194v572Zm0 0v-572 572Z" })
+                )
+            ),
+            "Number of Rolls: ",
+            _react2.default.createElement(
+                "span",
+                { className: "records" },
+                props.numberOfRolls
+            )
+        ),
+        _react2.default.createElement(_Timer2.default, { timerRunning: props.timerRunning, resetTime: props.resetTime }),
+        _react2.default.createElement(
+            "pre",
+            null,
+            _react2.default.createElement(
+                "span",
+                { className: "records-icons" },
+                _react2.default.createElement(
+                    "svg",
+                    { xmlns: "http://www.w3.org/2000/svg", height: "24px", viewBox: "0 -960 960 960", width: "24px", fill: "#5035ff" },
+                    _react2.default.createElement("path", { d: "M270.69-108v-86H437v-125.08q-48.15-8.54-88.96-40.19-40.81-31.65-57.58-77.96-79.23-7.23-130.84-66.77Q108-563.54 108-644v-126h165.08v-82h413.84v82H852v126q0 80.46-51.62 140-51.61 59.54-130.84 66.77-16.77 46.31-57.58 77.96-40.81 31.65-88.96 40.19V-194h166.31v86H270.69Zm2.39-421.69V-684H194v40q0 38.85 21.73 70t57.35 44.31Zm207.01 129.08q50.1 0 85.08-35.05t34.98-85.11V-766h-240.3v245.23q0 50.06 35.07 85.11t85.17 35.05Zm206.83-129.08q35.62-13.16 57.35-44.31Q766-605.15 766-644v-40h-79.08v154.31ZM480-583.31Z" })
+                )
+            ),
+            "Best record: ",
+            _react2.default.createElement(
+                "span",
+                { className: "records" },
+                props.bestRecord
+            )
+        )
+    );
+}
 
 /***/ })
 /******/ ]);
